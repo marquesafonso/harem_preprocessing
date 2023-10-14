@@ -409,7 +409,7 @@ def save_file(saving_strategy: str, output_path: str, converted_data: List[DOCUM
     if saving_strategy == "one_file":
         print(f'Writing output file to {output_path}')
         with open(output_path, 'w', encoding='UTF-8') as fd:
-            json.dump(converted_data, fd,ensure_ascii=False)
+            json.dump(converted_data, fd,ensure_ascii=False, indent=2)
     else:
 
         for doc in converted_data:
@@ -422,7 +422,7 @@ def save_file(saving_strategy: str, output_path: str, converted_data: List[DOCUM
 
             print(f'Writing output file to {output_dir}')    
             with open(output_dir, 'w', encoding='UTF-8') as fd:
-                json.dump(doc['doc_ps'],fd, ensure_ascii=False)
+                json.dump(doc['doc_ps'],fd, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     from argparse import ArgumentParser
