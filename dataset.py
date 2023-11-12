@@ -1,4 +1,4 @@
-import json, random, csv
+import json, random
 
 # Opening JSON file
 def load_data():
@@ -16,7 +16,8 @@ all_docs = []
 data = load_data()
 for _ , data in enumerate(data):
     for _, example in enumerate(data["doc_ps"]):
-        all_docs += [example]
+        if len(example['p_text']) > 0:
+            all_docs += [example]
 
 random.shuffle(all_docs)
 total_exemplos = len(all_docs)
