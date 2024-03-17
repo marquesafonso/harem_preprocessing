@@ -12,12 +12,18 @@ def write_csv(filename:str, data:list):
         for example in data:
             file.write(f"{example['p_text']} \t {example['entities']}\n")
 
+def writer_json(docs:list, outfile:str):
+    with open(outfile, 'w', encoding='utf-8') as f:
+        json.dump(docs, f, ensure_ascii=False, indent=1)
+
 all_docs = []
 data = load_data()
 for _ , data in enumerate(data):
     for _, example in enumerate(data["doc_ps"]):
         if len(example['p_text']) > 0:
             all_docs += [example]
+
+writer_json(all_docs, "harem_groundtruth.json")
 
 random.shuffle(all_docs)
 total_exemplos = len(all_docs)
