@@ -141,4 +141,4 @@ At this point we need only to run:
 uv run main.py
 ```
 
-You may now check the dataset at: [marquesafonso/SegundoHAREM](https://huggingface.co/datasets/marquesafonso/SegundoHAREM/blob/main/README.md)
+You may now check the dataset at: [marquesafonso/SegundoHAREM](https://huggingface.co/datasets/marquesafonso/SegundoHAREM)
