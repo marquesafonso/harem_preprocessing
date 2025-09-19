@@ -113,3 +113,32 @@ To run the tests, first install the test requirements and run the tests:
 
     $ pip install requirements_test.txt
     $ HAREM_DATA_DIR=test_files/ python tests.py
+
+
+## Preparing a Huggingface dataset
+
+You will note that we are using uv as our dependency management tool. To install the necessary libraries, simply run:
+
+```
+uv sync
+```
+
+We start by donwloading the [Second](https://www.linguateca.pt/aval_conjunta/HAREM/CDSegundoHAREM.xml) version of the HAREM dataset.
+
+```
+curl https://www.linguateca.pt/aval_conjunta/HAREM/CDSegundoHAREM.xml -o CDSegundoHAREM.xml
+```
+Then we use this forks CLI commands to output the selective and total versions to json format.
+
+```
+uv run xml_to_json.py './CDSegundoHAREM.xml' --scenario 'selective' --version second
+uv run xml_to_json.py './CDSegundoHAREM.xml' --scenario 'total' --version second
+```
+
+At this point we need only to run:
+
+```
+uv run main.py
+```
+
+You may now check the dataset at: [marquesafonso/SegundoHAREM](https://huggingface.co/datasets/marquesafonso/SegundoHAREM/blob/main/README.md)
